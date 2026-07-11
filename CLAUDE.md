@@ -97,6 +97,9 @@ Image goes to **Artifact Registry**, repo `web` in region **`us-west1`**, projec
   `npx playwright screenshot --full-page --viewport-size=1280,900 http://localhost:3000 out.png`
   (and `--viewport-size=390,844` for mobile) to eyeball changes.
 
+## Source control
+Git repo with remote **`origin`** → `https://github.com/Retcor/cratermus.git`
+(default branch `main`). `.idea/` and `.vscode/` are gitignored.
+
 ## Not set up
-No test suite, no linter config beyond `next lint`, and this directory is **not a git
-repo**. Don't assume git operations work.
+No test suite and no linter config beyond `next lint`.
