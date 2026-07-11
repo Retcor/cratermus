@@ -1,9 +1,10 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import Services from "@/components/Services";
 import MusicSection from "@/components/MusicSection";
 import About from "@/components/About";
 import Events from "@/components/Events";
-import Booking from "@/components/Booking";
+import Hire from "@/components/Hire";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -12,10 +13,11 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Services />
         <MusicSection />
         <About />
         <Events />
-        <Booking />
+        <Hire />
       </main>
       <Footer />
     </>

@@ -87,10 +87,10 @@ and then deploy with: `docker push us-docker.pkg.dev/<kubernetes-project-id>/web
 
 ```
 app/                 Next.js App Router (layout, page, global styles)
-components/          UI: Header, Hero, MusicSection, EmbedPlayer, About, Events, Booking, Footer
+components/          UI: Header, Hero, Services, MusicSection, EmbedPlayer, About, Events, Hire, Footer
 content/             ← edit these: site.ts, music.ts, events.ts
 lib/embeds.ts        Turns share URLs into platform embeds
-public/logo.jpg      Logo (also used for favicon + social share image)
+public/logo.png      Logo (also used for favicon + social share image)
 Dockerfile           Multi-stage build for Cloud Run
 ```
 

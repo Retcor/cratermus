@@ -6,19 +6,17 @@ export default function About() {
   return (
     <section id="about" className="section">
       <div className="container-x grid items-center gap-12 md:grid-cols-2">
-        <div className="relative mx-auto w-full max-w-sm">
+        <div className="relative mx-auto flex w-full max-w-sm items-center justify-center py-6">
           <div className="absolute -left-4 -top-4 -z-10 h-40 w-40 rounded-full bg-glitch-green/10 blur-2xl" />
           <div className="absolute -bottom-4 -right-4 -z-10 h-40 w-40 rounded-full bg-glitch-blue/10 blur-2xl" />
-          <div className="absolute -inset-3 -z-10 rounded-2xl bg-accent/10 blur-2xl" />
-          <div className="overflow-hidden rounded-2xl border border-line bg-surface p-8">
-            <Image
-              src="/logo.jpg"
-              alt={`${site.name} logo`}
-              width={320}
-              height={320}
-              className="chromatic mx-auto rounded-xl ring-1 ring-accent/30"
-            />
-          </div>
+          <div className="absolute inset-6 -z-10 rounded-full bg-accent/10 blur-3xl" />
+          <Image
+            src="/logo.png"
+            alt={`${site.name} logo`}
+            width={340}
+            height={348}
+            className="h-auto w-full max-w-[260px] drop-shadow-[0_0_36px_rgba(225,20,20,0.4)]"
+          />
         </div>
 
         <div>
@@ -32,8 +30,8 @@ export default function About() {
               </p>
             ))}
           </div>
-          <a href="#booking" className="btn-primary mt-8">
-            Book a Set
+          <a href="#hire" className="btn-primary mt-8">
+            Hire Me
           </a>
         </div>
       </div>

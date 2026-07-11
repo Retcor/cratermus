@@ -5,7 +5,7 @@ import { SocialIcon } from "./icons";
  * Row of streaming-platform links (from site.socials) framed as "go listen to
  * more music" rather than contact methods. Icons alternate a light blue / green
  * glitch tint on hover to tie into the accent palette. Reused in the Music and
- * Booking sections.
+ * Hire sections.
  */
 export default function MusicLinks({ className = "" }: { className?: string }) {
   return (

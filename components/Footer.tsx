@@ -7,13 +7,13 @@ export default function Footer() {
   return (
     <footer className="border-t border-line">
       <div className="container-x flex flex-col items-center gap-6 py-12 sm:flex-row sm:justify-between">
-        <a href="#top" className="flex items-center gap-3">
+        <a href="#top" className="flex items-center gap-2">
           <Image
-            src="/logo.jpg"
+            src="/logo.png"
             alt={`${site.name} logo`}
-            width={32}
-            height={32}
-            className="rounded-md ring-1 ring-line"
+            width={340}
+            height={348}
+            className="h-6 w-auto"
           />
           <span className="font-display text-base font-bold uppercase tracking-widest">
             {site.name}

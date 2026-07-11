@@ -8,10 +8,11 @@ import { hasUpcomingEvents } from "@/lib/events";
 // "Events" only appears when there are upcoming shows in content/events.ts;
 // otherwise the link would jump nowhere (the section auto-hides when empty).
 const NAV = [
+  { label: "Services", href: "#services" },
   { label: "Music", href: "#music" },
   { label: "About", href: "#about" },
   ...(hasUpcomingEvents ? [{ label: "Events", href: "#events" }] : []),
-  { label: "Booking", href: "#booking" },
+  { label: "Hire", href: "#hire" },
 ];
 
 export default function Header() {
@@ -34,13 +35,13 @@ export default function Header() {
       }`}
     >
       <div className="container-x flex h-16 items-center justify-between">
-        <a href="#top" className="flex items-center gap-3">
+        <a href="#top" className="flex items-center gap-2">
           <Image
-            src="/logo.jpg"
+            src="/logo.png"
             alt={`${site.name} logo`}
-            width={36}
-            height={36}
-            className="rounded-md ring-1 ring-line"
+            width={340}
+            height={348}
+            className="h-6 w-auto"
             priority
           />
           <span className="font-display text-lg font-bold uppercase tracking-widest">
@@ -58,8 +59,8 @@ export default function Header() {
               {item.label}
             </a>
           ))}
-          <a href="#booking" className="btn-primary !px-4 !py-2">
-            Book
+          <a href="#hire" className="btn-primary !px-4 !py-2">
+            Hire Me
           </a>
         </nav>
 

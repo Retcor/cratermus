@@ -3,28 +3,29 @@ import { SocialIcon } from "./icons";
 import GlitchRule from "./GlitchRule";
 import MusicLinks from "./MusicLinks";
 
-export default function Booking() {
-  const subject = encodeURIComponent(`Booking inquiry — ${site.name}`);
+export default function Hire() {
+  const subject = encodeURIComponent(`Project inquiry — ${site.name}`);
   const bodyLines = [
     "Hi,",
     "",
-    "I'd like to book CRATERMUS. Details:",
+    "I'd like to commission original music. Here are the details:",
     "",
-    "• Event type (party / festival / club):",
-    "• Date:",
-    "• Location / venue:",
-    "• Expected crowd size:",
-    "• Set length:",
+    "• Project type (game / stream / film / ad / other):",
+    "• About the project:",
+    "• What you need (a track, full soundtrack, theme, etc.):",
+    "• Mood / references:",
+    "• Where the music will be used:",
+    "• Deadline:",
     "• Budget:",
     "",
     "Thanks!",
   ].join("\n");
-  const mailto = `mailto:${site.bookingEmail}?subject=${subject}&body=${encodeURIComponent(
+  const mailto = `mailto:${site.contactEmail}?subject=${subject}&body=${encodeURIComponent(
     bodyLines,
   )}`;
 
   return (
-    <section id="booking" className="section">
+    <section id="hire" className="section">
       <div className="container-x">
         <div className="relative overflow-hidden rounded-2xl border border-line bg-surface p-8 sm:p-12">
           <div
@@ -37,27 +38,23 @@ export default function Booking() {
           />
           <div className="relative grid gap-10 md:grid-cols-2 md:items-center">
             <div>
-              <span className="eyebrow">Booking</span>
+              <span className="eyebrow">Hire</span>
               <h2 className="heading">
-                Make new stories with{" "}
-                <span className="text-accent">CRATERMUS</span> as your DJ
+                Bring your story to life with{" "}
+                <span className="text-accent">CRATERMUS</span>
               </h2>
               <GlitchRule className="mt-5" />
               <p className="mt-5 max-w-md text-muted">
-                Available for parties, clubs, and festivals. Send the details
-                and let&apos;s write the next one together.
+                Working on a game, a stream, a film, or anything that needs its
+                own sound? Tell me about it and let&apos;s create something
+                original — made for you, and cleared for you.
               </p>
-              {site.basedIn && (
-                <p className="mt-2 text-sm font-medium uppercase tracking-wider text-muted">
-                  {site.basedIn}
-                </p>
-              )}
             </div>
 
             <div className="flex flex-col gap-6">
               <a href={mailto} className="btn-primary w-full">
                 <SocialIcon name="email" width={18} height={18} />
-                Email to Book
+                Email to Hire
               </a>
 
               <div className="text-center">
@@ -70,10 +67,10 @@ export default function Booking() {
               <p className="text-center text-sm text-muted">
                 Direct:{" "}
                 <a
-                  href={`mailto:${site.bookingEmail}`}
+                  href={`mailto:${site.contactEmail}`}
                   className="font-medium text-ink underline decoration-accent/50 underline-offset-4 hover:text-accent"
                 >
-                  {site.bookingEmail}
+                  {site.contactEmail}
                 </a>
               </p>
             </div>

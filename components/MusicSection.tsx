@@ -20,7 +20,7 @@ export default function MusicSection() {
           <h2 className="heading">The Music</h2>
           <GlitchRule className="mt-5" />
           <p className="mx-auto mt-5 max-w-xl text-muted">
-            Original tracks and mixes. Hit play and dig in.
+            A selection of original tracks and scores. Hit play and dig in.
           </p>
         </div>
 

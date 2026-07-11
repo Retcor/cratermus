@@ -1,6 +1,6 @@
 /**
- * SITE CONFIG — edit this file to update the DJ's info, booking contact,
- * and social links. No code changes required.
+ * SITE CONFIG — edit this file to update the artist's info, contact address,
+ * services, and links. No code changes required.
  */
 
 export interface SocialLink {
@@ -18,16 +18,25 @@ export interface SocialLink {
     | "email";
 }
 
+export interface Service {
+  title: string;
+  description: string;
+  /** Icon key — see components/Services.tsx for supported values. */
+  icon: "game" | "stream" | "custom";
+}
+
 export interface SiteConfig {
   name: string;
   tagline: string;
   /** Short line under the logo in the hero. */
   heroSubtitle: string;
+  /** The kinds of work available to commission (Services section). */
+  services: Service[];
   /** Multi-paragraph bio. Each string is one paragraph. */
   bio: string[];
-  /** Where booking inquiries should be sent. */
-  bookingEmail: string;
-  /** City / region shown near booking (optional). */
+  /** Where hire/commission inquiries should be sent. */
+  contactEmail: string;
+  /** City / region shown near the hire section (optional). */
   basedIn?: string;
   socials: SocialLink[];
   seo: {
@@ -42,12 +51,32 @@ export const site: SiteConfig = {
   name: "CRATERMUS",
   tagline: "Stories from music.",
   heroSubtitle:
-    "DJ · Producer · Selector — bringing deep cuts and heavy energy to parties and festivals.",
-  bio: [
-    "CRATERMUS is a DJ and producer digging through genres to build sets that move a room from the first drop to the last record. From intimate warehouse nights to festival main stages, the focus is the same: energy, flow, and tracks you won't hear anywhere else.",
-    "Rooted in crate-digging culture, every set blends the familiar with the unearthed — a mix of originals, edits, and rare finds tuned to the moment and the crowd.",
+    "Music producer & composer. I write original soundtracks and copyright-safe tracks that bring your story — your game, your stream, your project — to life.",
+  services: [
+    {
+      icon: "game",
+      title: "Game Soundtracks",
+      description:
+        "Original scores tuned to your game's world — themes, moods, and motifs that make players feel every moment.",
+    },
+    {
+      icon: "stream",
+      title: "Music for Streams & Content",
+      description:
+        "Copyright-safe tracks made just for you, so your streams and videos never get muted, flagged, or claimed.",
+    },
+    {
+      icon: "custom",
+      title: "Custom Commissions",
+      description:
+        "Films, trailers, ads, or something entirely new — bespoke music composed around your story and vision.",
+    },
   ],
-  bookingEmail: "cratermus.music@gmail.com",
+  bio: [
+    "CRATERMUS is a music producer and composer who scores stories. Whether it's an original soundtrack for an indie game, copyright-safe music for a streamer, or a custom track for a creative project, the goal is the same: music that fits your world and makes people feel it.",
+    "Every commission starts with your vision. I write, produce, and master original music built around the mood, pacing, and identity of your project — so the sound is unmistakably yours, and never a copyright headache.",
+  ],
+  contactEmail: "cratermus.music@gmail.com",
   socials: [
     { label: "YouTube", url: "https://www.youtube.com/channel/UCNkQaAKe-bqGwtSouu_FshA", icon: "youtube" },
     { label: "Spotify", url: "https://open.spotify.com/artist/0f26WRdsplzpGKUfbosN7Y", icon: "spotify" },
@@ -55,9 +84,9 @@ export const site: SiteConfig = {
     { label: "Pandora", url: "https://www.pandora.com/artist/cratermus/ARwj9jJJx4pp5c9", icon: "pandora" },
   ],
   seo: {
-    title: "CRATERMUS — DJ & Producer",
+    title: "CRATERMUS — Music Producer & Composer",
     description:
-      "Official site of CRATERMUS — DJ and producer. Listen to tracks and mixes, and book him for your party or festival.",
-    ogImage: "/logo.jpg",
+      "CRATERMUS is a music producer and composer creating original soundtracks and copyright-safe music for indie games, streamers, and creative projects. Hire him to bring your story to life.",
+    ogImage: "/logo.png",
   },
 };

@@ -18,12 +18,12 @@ export default function Hero() {
       <div className="container-x flex min-h-[92vh] flex-col items-center justify-center py-28 text-center">
         <div className="mb-8 animate-fade-up">
           <Image
-            src="/logo.jpg"
+            src="/logo.png"
             alt={`${site.name} logo`}
-            width={128}
-            height={128}
+            width={340}
+            height={348}
             priority
-            className="chromatic mx-auto rounded-2xl shadow-chromatic ring-1 ring-accent/40"
+            className="mx-auto h-56 w-auto drop-shadow-[0_0_40px_rgba(225,20,20,0.45)]"
           />
         </div>
 
@@ -42,11 +42,11 @@ export default function Hero() {
         </p>
 
         <div className="mt-10 flex animate-fade-up flex-col gap-3 sm:flex-row">
-          <a href="#music" className="btn-primary">
-            Listen
+          <a href="#hire" className="btn-primary">
+            Hire Me
           </a>
-          <a href="#booking" className="btn-ghost">
-            Book Him
+          <a href="#music" className="btn-ghost">
+            Hear My Work
           </a>
         </div>
       </div>

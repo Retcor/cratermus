@@ -4,10 +4,15 @@ Guidance for AI agents (and humans) working in this repo. Keep it up to date whe
 architecture or conventions change.
 
 ## What this is
-Marketing + booking website for the DJ/producer **CRATERMUS**. Goals: showcase his
-music (to grow recognition) and let people reach him to book gigs (parties &
-festivals). Frontend-first, with room for a backend later. Deployed as a Docker
-image on **Google Cloud Run**.
+Marketing + hire website for the music producer/composer **CRATERMUS**. Goal: win
+**commission work** — original soundtracks for indie games, copyright-safe music for
+streamers, and custom music for creative projects. Tone: "bring your story to life
+through music" (tagline **"Stories from music."**). The Music section is his
+portfolio/proof; the Hire section is the conversion point. Frontend-first, with room
+for a backend later. Deployed as a Docker image on **Google Cloud Run**.
+
+> History: this started as a **DJ booking** site and was pivoted to producer-for-hire.
+> Keep copy focused on music **production/commissions**, not DJing/gigs.
 
 ## Tech stack
 - **Next.js (App Router)** + **TypeScript**, `output: "standalone"` (see `next.config.js`).
@@ -19,12 +24,19 @@ image on **Google Cloud Run**.
 Non-developers edit files in `content/` — **no code changes** to update the site.
 This is the most important convention; preserve it.
 
-- `content/site.ts` — brand name, tagline, hero copy, bio, `bookingEmail`, and
-  `socials[]` (label, url, icon). Also SEO/OG config.
-- `content/music.ts` — `tracks[]`. Paste a YouTube / Spotify / SoundCloud **share
-  URL**; platform is auto-detected. Fields: `title?`, `url`, `platform?`, `featured?`.
+- `content/site.ts` — brand name, tagline, hero copy, bio, `contactEmail`, `services[]`
+  (the "What I Make" cards), and `socials[]` (label, url, icon). Also SEO/OG config.
+- `content/music.ts` — `tracks[]` (his portfolio). Paste a YouTube / Spotify /
+  SoundCloud **share URL**; platform is auto-detected. Fields: `title?`, `url`,
+  `platform?`, `featured?`.
 - `content/events.ts` — `events[]` upcoming shows. Empty ⇒ the whole Events section
-  **and** its nav link disappear automatically.
+  **and** its nav link disappear automatically. (Legacy from the DJ version; kept but
+  unused — leave empty unless he starts doing live dates.)
+
+### Adding a service
+Edit `services[]` in `content/site.ts` (title, description, `icon`). Icon keys live in
+the `ICONS` map in `components/Services.tsx` (`game` | `stream` | `custom`) — add a new
+SVG there to support another key.
 
 ### Adding a music platform
 `lib/embeds.ts` turns a share URL into an embed. To support a new platform: extend
@@ -37,8 +49,12 @@ Two edits: add the key to the `icon` union in `content/site.ts`, then add the SV
 component + register it in the `MAP` in `components/icons.tsx` (`SocialIcon`).
 
 ## Layout & components
-Single-page scroll (`app/page.tsx`): Header → Hero → MusicSection → About → Events →
-Booking → Footer. All in `components/`.
+Single-page scroll (`app/page.tsx`): Header → Hero → **Services** → MusicSection →
+About → Events (hidden) → **Hire** → Footer. All in `components/`.
+- `Services.tsx` — the "What I Make" cards, driven by `site.services`; has its own
+  local `ICONS` map (not the social `SocialIcon`).
+- `Hire.tsx` — the commission/contact section (`id="hire"`). `mailto:` with a
+  project-brief template + `MusicLinks`. This replaced the old `Booking.tsx`.
 - `EmbedPlayer.tsx` — client component; renders a lightweight "click-to-load" facade
   so many third-party iframes don't tank page load. Videos use 16:9; audio embeds use
   a fixed height from `lib/embeds.ts`.
@@ -53,22 +69,31 @@ Palette lives in `tailwind.config.ts`. Base is near-black `#0B0B0C` with **crims
 `#E11414` (accent) dominant**. The logo has a subtle RGB-split "glitch," so two
 secondary accents exist: `glitch-blue #4CC9F0` and `glitch-green #6EE7B7`.
 
+The logo (`public/logo.png`, transparent RGBA, ~340px/48KB, padding trimmed) has the RGB-split glitch **baked into
+the artwork**, so it's rendered plainly with just a red `drop-shadow` glow — do NOT
+re-apply `.chromatic`/`shadow-chromatic` to it (that double-glitches). Rings/rounded
+boxes were removed since the mark is transparent, not an opaque square.
+
 Glitch is applied **sparingly** as detailing — keep red dominant. Current usages:
-- `.chromatic` (in `app/globals.css`) — RGB-split filter on the logo (Hero, About).
-- `shadow-chromatic` — chromatic glow on the logo and the play buttons.
+- `.chromatic` (in `app/globals.css`) — RGB-split filter (no longer used on the logo
+  now that the new logo bakes it in; kept for reuse).
+- `shadow-chromatic` — chromatic glow on the play buttons.
 - `GlitchRule.tsx` — small red/green/blue offset-bar divider under the hero tagline
   and each section heading.
 - A few eyebrow labels tinted (`text-glitch-blue` on "Listen", `text-glitch-green` on
-  "About"); "Booking" stays red. Ambient blue/green glow blobs in Hero/About/Booking.
+  "About" and "What I Make"); "Hire" stays red. Ambient blue/green glow blobs in
+  Hero/About/Hire. `MusicLinks.tsx` icons hover blue/green (Music, Hire, Footer).
 
 History (don't re-try without asking): glitch on **body text** and on **buttons** was
 tried and the owner rejected both — keep buttons/text clean.
 
-## Booking
-Currently **contact-only**: `Booking.tsx` has a `mailto:` "Email to Book" button (with
-a pre-filled inquiry template) plus social links. A scheduling tool (Cal.com, hosted +
-`@calcom/embed-react`, using its "requires confirmation" approval gate) has been
-discussed as the next step but is **not implemented**.
+## Hire / contact
+Currently **contact-only**: `Hire.tsx` has a `mailto:` "Email to Hire" button with a
+pre-filled **project-brief** template (project type, scope, references, deadline,
+budget, usage), plus the `MusicLinks`. A scheduling/intake tool (Cal.com, hosted +
+`@calcom/embed-react`, "requires confirmation" gate) was discussed for the old DJ
+version but is **not implemented**; for commissions a project intake form is the more
+natural next step.
 
 ## Commands
 - Dev: `npm run dev` → http://localhost:3000

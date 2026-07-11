@@ -25,7 +25,15 @@ export const metadata: Metadata = {
   title: site.seo.title,
   description: site.seo.description,
   applicationName: site.name,
-  keywords: ["DJ", "producer", site.name, "booking", "music", "festival"],
+  keywords: [
+    "music producer",
+    "composer",
+    site.name,
+    "game soundtrack",
+    "stream music",
+    "copyright-free music",
+    "commission music",
+  ],
   openGraph: {
     title: site.seo.title,
     description: site.seo.description,
@@ -40,8 +48,8 @@ export const metadata: Metadata = {
     images: [site.seo.ogImage],
   },
   icons: {
-    icon: "/logo.jpg",
-    apple: "/logo.jpg",
+    icon: "/logo.png",
+    apple: "/logo.png",
   },
 };
 
