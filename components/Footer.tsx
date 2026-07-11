@@ -21,14 +21,18 @@ export default function Footer() {
         </a>
 
         <div className="flex gap-3">
-          {site.socials.map((s) => (
+          {site.socials.map((s, i) => (
             <a
               key={s.label}
               href={s.url}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={s.label}
-              className="text-muted transition-colors hover:text-accent"
+              className={`text-muted transition-colors ${
+                i % 2 === 0
+                  ? "hover:text-glitch-blue"
+                  : "hover:text-glitch-green"
+              }`}
             >
               <SocialIcon name={s.icon} />
             </a>
