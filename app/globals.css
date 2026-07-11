@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  @apply bg-bg text-ink font-sans antialiased;
+  /* Subtle vignette + faint red glow echoing the logo. */
+  background-image:
+    radial-gradient(1200px 600px at 50% -10%, rgba(225, 20, 20, 0.10), transparent 70%),
+    radial-gradient(900px 500px at 100% 100%, rgba(225, 20, 20, 0.06), transparent 70%);
+  background-attachment: fixed;
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .section {
+    @apply scroll-mt-20 py-20 sm:py-28;
+  }
+
+  .eyebrow {
+    @apply mb-3 inline-block text-xs font-semibold uppercase tracking-[0.25em] text-accent;
+  }
+
+  .heading {
+    @apply font-display text-4xl font-bold uppercase tracking-tight sm:text-5xl;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 text-sm font-semibold uppercase tracking-wider transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-white hover:bg-accent-hover shadow-glow-sm;
+  }
+
+  .btn-ghost {
+    @apply btn border border-line text-ink hover:border-accent hover:text-accent;
+  }
+
+  .card {
+    @apply rounded-xl border border-line bg-surface;
+  }
+}
+
+/* RGB-split "glitch" treatment for the logo — cyan on one edge, green on the
+   other, echoing the chromatic aberration in the original artwork. */
+.chromatic {
+  filter: drop-shadow(4px 0 0 rgba(76, 201, 240, 0.7))
+    drop-shadow(-4px 0 0 rgba(110, 231, 183, 0.65));
+}
+
+/* Thin accent scrollbar for a cohesive look. */
+::selection {
+  background: rgba(225, 20, 20, 0.35);
+}
